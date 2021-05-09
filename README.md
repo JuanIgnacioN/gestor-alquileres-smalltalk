@@ -1,4 +1,4 @@
-# Gestor_Alquileres
+# Gestor de Alquileres
 
 PROCESO PARA EJECUTAR EL PROYECTO
 
