@@ -1,0 +1,35 @@
+El proyecto fue creado con la versión VisualWorks® Personal Use Edition, 8.3 of 28 de julio de 2017.
+Es necesario cargar el siguiente código en la siguiente ruta para que el programa funcione correctamente:
+
+Base VisualWorks => UIBuilder => UIBuilder-Framework =>
+Nos paramos sobre ApplicationModel => binding  =>  Y en source pegamos y guardamos las siguientes
+propiedades:
+
+aisMakeInvisible: idOrCollection
+	"Make the component(s) specified in the argument invisible."
+
+	| bldr |
+	(bldr := self builder) isNil ifTrue: [^self].
+	idOrCollection isSymbol
+		ifTrue: [| comp |
+			(comp := bldr componentAt: idOrCollection) notNil
+				ifTrue: [comp beInvisible]]
+		ifFalse: [
+			idOrCollection do: [:id || comp |
+				(comp := bldr componentAt: id) notNil
+					ifTrue: [comp beInvisible]]].
+
+
+aisDisable: idOrCollection
+	"Disable the component(s) specified in the argument."
+
+	| bldr |
+	(bldr := self builder) isNil ifTrue: [^self].
+	idOrCollection isSymbol
+		ifTrue: [| comp |
+			(comp := bldr componentAt: idOrCollection) notNil
+				ifTrue: [comp disable]]
+		ifFalse: [
+			idOrCollection do: [:id || comp |
+				(comp := bldr componentAt: id) notNil
+					ifTrue: [comp disable]]].
